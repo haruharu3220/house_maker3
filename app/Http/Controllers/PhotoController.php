@@ -4,12 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-
+use Validator;
+use App\Models\Photo;
 
 
 class PhotoController extends Controller
 {
-    //
+    
+    //index
+    public function index(){
+        return response()->view('photo.index');
+    }
+    
+    //create
+    public function create()
+    {
+        return response()->view('photo.create');
+    }
+
+    
+    
+    //store
     public function store(Request $request)
     {
     // バリデーション
@@ -29,5 +44,8 @@ class PhotoController extends Controller
     // tweet.index」にリクエスト送信（一覧ページに移動）
     return redirect()->route('tweet.index');
     }
+    
+    
+    
     
 }
