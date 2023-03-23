@@ -99,30 +99,49 @@
         </dl>
       </li>
   <!--/sort-btn--></ul>
+   <ul class="grid"><!--1番外側のタグにgrid というクラス名を付与。-->
+    @foreach ($photos as $photo)
+    <li class="item {{$photo->image}} {{$photo->id}}"><!--li には、item というクラス名と並び替え基準となる複数のクラス名（チェックボックスのクラス名と同じ名前）を付与。-->
+      <div class="item-content"><!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
+      <div class="item-content"><!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
+        <tr class="hover:bg-gray-lighter">  
+          <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
+            <img src="{{ asset('storage/image/'.$photo->image)}}"　class="mx-auto" >
+            <div class="flex">
+              <!-- 更新ボタン -->
+              <!-- 削除ボタン -->
+            </div>
+          </td>
+        </tr>
+      </div>  
+      </div>
+    </li>
+    @endforeach
+   
 
-    <ul class="grid"><!--1番外側のタグにgrid というクラス名を付与。-->
-      <li class="item cat01 color01"><!--li には、item というクラス名と並び替え基準となる複数のクラス名（チェックボックスのクラス名と同じ名前）を付与。-->
-        <div class="item-content"><!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
-          <a href="img/01.jpg" data-fancybox="group1" data-caption="グループ1キャプション">
-            <img src="img/01.jpg" alt="">
-          </a><!--複数画像をグループ化してサムネイル表示させたい場合は、datafancybox="半角英数字で同一のグループ名"、キャプションを入れたい場合はdata-caption="キャプションタイトル"を設定する。-->
-        </div>
-      </li>
-      <li class="item cat01 cat02 color01">
-        <div class="item-content">
-          <a href="img/02.jpg" data-fancybox="group2" data-caption="グループ2キャプション">
-            <img src="img/02.jpg" alt="">
-          </a>
-        </div>
-      </li>
-      <li class="item cat03 color02">
-        <div class="item-content">
-          <a href="img/03.jpg" data-fancybox="group3" data-caption="グループ3キャプション">
-            <img src="img/03.jpg" alt="">
-          </a>
-        </div>
-      </li>
-    </ul>
+<!--        <div class="item-content"><!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->-->
+<!--          <a href="img/01.jpg" data-fancybox="group1" data-caption="グループ1キャプション">-->
+<!--            <img src="img/01.jpg" alt="">-->
+<!--          </a><!--複数画像をグループ化してサムネイル表示させたい場合は、datafancybox="半角英数字で同一のグループ名"、キャプションを入れたい場合はdata-caption="キャプションタイトル"を設定する。-->-->
+
+
+
+<!-->-->
+<!--      <li class="item cat01 cat02 color01">-->
+<!--        <div class="item-content">-->
+<!--          <a href="img/02.jpg" data-fancybox="group2" data-caption="グループ2キャプション">-->
+<!--            <img src="img/02.jpg" alt="">-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <li class="item cat03 color02">-->
+<!--        <div class="item-content">-->
+<!--          <a href="img/03.jpg" data-fancybox="group3" data-caption="グループ3キャプション">-->
+<!--            <img src="img/03.jpg" alt="">-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
 
 
   </x-app-layout> 
