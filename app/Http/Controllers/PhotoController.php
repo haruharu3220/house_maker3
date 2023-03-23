@@ -28,6 +28,8 @@ class PhotoController extends Controller
     //store
     public function store(Request $request)
     {
+        
+        $photo = new photo();
     // バリデーション
         // 今回は特に不要
     // バリデーション:エラー
@@ -43,7 +45,7 @@ class PhotoController extends Controller
             $original = $request->file("image")->getClientOriginalName();
             $name = date("Ymd_His")."_".$original;
             request() ->file("image")->move("storage/image",$name);
-            // $tweet -> image = $name;
+            $photo -> image = $name;
         }
         
     // dd($name);
@@ -51,7 +53,13 @@ class PhotoController extends Controller
     $data = $request->merge(['user_id' => Auth::user()->id])->all();
     // $result = Photo::create($data);
 
-    // tweet.index」にリクエスト送信（一覧ページに移動）
+    $photo -> user_id = Auth::user() -> id;
+    $photo-> save();
+    
+    //tagの登録はまだ
+    
+    
+    // photo.index」にリクエスト送信（一覧ページに移動）
     return redirect()->route('photo.index');
     }
     
