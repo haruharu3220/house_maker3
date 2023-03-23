@@ -99,25 +99,21 @@
         </dl>
       </li>
   <!--/sort-btn--></ul>
-   <ul class="grid"><!--1番外側のタグにgrid というクラス名を付与。-->
+  <ul class="grid"><!--1番外側のタグにgrid というクラス名を付与。-->
     @foreach ($photos as $photo)
     <li class="item {{$photo->image}} {{$photo->id}}"><!--li には、item というクラス名と並び替え基準となる複数のクラス名（チェックボックスのクラス名と同じ名前）を付与。-->
       <div class="item-content"><!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
-      <div class="item-content"><!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
-        <tr class="hover:bg-gray-lighter">  
-          <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
-            <img src="{{ asset('storage/image/'.$photo->image)}}"　class="mx-auto" >
-            <div class="flex">
-              <!-- 更新ボタン -->
-              <!-- 削除ボタン -->
-            </div>
-          </td>
-        </tr>
-      </div>  
+        <div class="item-content"><!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
+          <tr class="hover:bg-gray-lighter">  
+            <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
+              <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
+            </td>
+          </tr>
+        </div>  
       </div>
     </li>
     @endforeach
-   
+  </ul>
 
 <!--        <div class="item-content"><!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->-->
 <!--          <a href="img/01.jpg" data-fancybox="group1" data-caption="グループ1キャプション">-->
@@ -143,15 +139,24 @@
 <!--      </li>-->
 <!--    </ul>-->
 
+<!-- モーダルウィンドウ -->
+<div class="modal-wrapper">
+<div id="modal">
+  <div class="modal-content">
+    <img src="" alt="">
+  </div>
+  <div class="modal-close">×</div>
+</div>
+</div>
 
   </x-app-layout> 
 
-      
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/web-animations-js@2.3.2/web-animations.min.js"></script>
   <script src="https://unpkg.com/muuri@0.8.0/dist/muuri.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-  <!--自作のJS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>  <!--自作のJS-->
   <script src="{{ asset('js/test.js') }}"></script>
 
     
