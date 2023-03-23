@@ -13,13 +13,14 @@ class PhotoController extends Controller
     
     //index
     public function index(){
-        return response()->view('photo.index');
+        $photos = Photo::getAllOrderByUpdated_at();
+        return response()->view('photo.index',compact('photos'));
     }
     
     //create
     public function create()
     {
-        return response()->view('photo.create');
+        return response()->view('photo.create');mk
     }
 
     
