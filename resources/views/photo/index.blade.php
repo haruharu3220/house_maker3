@@ -78,22 +78,27 @@
       <li class="item {{$photo->image}} {{$photo->id}}">
         <!--内側のdivには高さを維持するためにitem-contentというクラス名をつける。-->
         <div class="item-content">
+
           <a href="{{$photo->image}}" data-fancybox="group2" data-caption="グループ2キャプション">
               <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
           </a>
-           <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-left">
-              @method('delete')
-              @csrf
-              <!--<x-primary-button class="ml-3">-->
-                <button type="submit">
-                <i class="fa-regular fa-trash-can"></i>
-                <i class="fa-regular fa-trash-can"></i>
-                <i class="fas fa-thumbs-up"></i>
-                <i class="fa fa-wrench faa-wrench animated faa-fast"></i>
-                 <i class="fas fa-trash"></i>
-                </button>
-              <!--</x-primary-button>-->
+          <div class="flex">
+            <!--更新ボタン-->
+            <form action="{{ route('photo.edit',$photo->id) }}" method="GET" class="text-left">
+                @csrf
+                  <button type="submit">
+                   <i class="far fa-edit"></i>
+                  </button>
             </form>
+            <!--削除ボタン-->
+            <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-right">
+                @method('delete')
+                @csrf
+                  <button class="destroy" type="submit">
+                   <i class="fas fa-trash"></i>
+                  </button>
+            </form>
+          </div>
         </div>
       </li>
     @endforeach

@@ -30,9 +30,8 @@ class PhotoController extends Controller
     {
         
         $photo = new photo();
-    // バリデーション
-        // 今回は特に不要
-    // バリデーション:エラー
+        // バリデーション 今回は特に不要
+        // バリデーション:エラー
         // if ($validator->fails()) {
         //   return redirect()
         //     ->route('tweet.create')
@@ -48,19 +47,18 @@ class PhotoController extends Controller
             $photo -> image = $name;
         }
         
-    // dd($name);
-    // 編集 フォームから送信されてきたデータとユーザIDをマージし，DBにinsertする
-    $data = $request->merge(['user_id' => Auth::user()->id])->all();
-    // $result = Photo::create($data);
+        // dd($name);
+        // 編集 フォームから送信されてきたデータとユーザIDをマージし，DBにinsertする
+        $data = $request->merge(['user_id' => Auth::user()->id])->all();
+        // $result = Photo::create($data);
 
-    $photo -> user_id = Auth::user() -> id;
-    $photo-> save();
+        $photo -> user_id = Auth::user() -> id;
+        $photo-> save();
     
-    //tagの登録はまだ
-    
-    
-    // photo.index」にリクエスト送信（一覧ページに移動）
-    return redirect()->route('photo.index');
+        //tagの登録はまだ
+
+        // photo.index」にリクエスト送信（一覧ページに移動）
+        return redirect()->route('photo.index');
     }
     
     
@@ -72,4 +70,31 @@ class PhotoController extends Controller
     }
     
     
+    public function edit($id)
+    {
+        $photo = Photo::find($id);
+        return response()->view('photo.edit', compact('photo'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        //バリデーション
+        // $validator = Validator::make($request->all(), [
+        //     'tweet' => 'required | max:191',
+        //     'description' => 'required',
+        // ]);
+        //バリデーション:エラー
+        // if ($validator->fails()) {
+        //     return redirect()
+        //     ->route('tweet.edit', $id)
+        //     ->withInput()
+        //     ->withErrors($validator);
+        // }
+        //データ更新処理
+        $result = Photo::find($id)->update($request->all());
+        return redirect()->route('photo.index');
+    }
+    
 }
+
