@@ -14,14 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //他のテーブルと relation させるためには，カラム名を「モデル名小文字_id」とする必要がある．
-            $table->foreignId('team_id')->after('id')->nullable()->constrained()->cascadeOnDelete();
+            //
         });
-        
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('original_id');
-        });
-        
     }
 
     /**
@@ -33,8 +27,6 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropForeign(['team_id']);
-            $table->dropColumn(['team_id']);
         });
     }
 };
