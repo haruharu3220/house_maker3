@@ -23,7 +23,7 @@
 
 .sort-btn li{
 	margin:0 10px;
-list-style:none;
+    list-style:none;
 }
 
 .sort-btn ul li{
@@ -73,17 +73,20 @@ list-style:none;
 
 /*＝＝＝Muuriのレイアウトのための調整 */
 .grid {
-  position: relative;/*並び替えの基準点を指定*/
+    height:1000px;
+    width:100%;
+    position: relative;/*並び替えの基準点を指定*/
 }
 
 /*各画像の横幅などの設定*/
 .item {
-  display: block;
-  position: absolute;
-  width: 33%;/*横並びで3つ表示*/
-  padding:0 10px 10px 10px;/*画像に余白をつける*/
-  z-index: 1;
-list-style:none;
+    display: block;
+    position: absolute;
+    width: 20%;/*横並びで5つ表示*/
+    height: 20%;
+    padding:4px 4px 4px 4px;/*画像に余白をつける*/
+    z-index: 1;
+    list-style:none;
 }
 
 /*内側のボックスの高さが崩れないように維持*/
@@ -95,8 +98,9 @@ list-style:none;
 
 /*画像の横幅を100%にしてレスポンシブ化*/
 .grid img{
-	width:100%;
-	height:auto;
+	/*width:100%;*/
+	/*height:;*/
+	object-fit: cover;
 	vertical-align: bottom;/*画像の下にできる余白を削除*/
 }
 
@@ -140,8 +144,17 @@ list-style:none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 80%;
-  max-height: 80%;
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  /*text-align: center; /* 画像を中央に配置 */
+}
+
+.modal-content img {
+    margin: auto;
+    display: block;
+    max-width: 70%;
+    max-height: 70%;
 }
 
 .modal-close {
