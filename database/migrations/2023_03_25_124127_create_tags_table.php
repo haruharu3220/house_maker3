@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,5 +29,8 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
+        $table->dropForeign(['team_id']);
+        $table->dropColumn(['team_id']);
+
     }
 };
