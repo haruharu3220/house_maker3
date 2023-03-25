@@ -3,10 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\TagController;
 
+Route::middleware('auth')->group(function () {
+    //RESTfulルートを自動的に生成
+    Route::resource('photo', PhotoController::class);
+    Route::get('/setting/tag', [TagController::class, 'setting'])->name('setting.tag');
 
-//RESTfulルートを自動的に生成
-Route::resource('photo', PhotoController::class);
+});
 
 Route::get('/', function () {
     return view('welcome');
