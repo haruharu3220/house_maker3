@@ -77,7 +77,7 @@
               <script>
 
                 $(".select2.html").select2({
-                  placeholder: "都道府県を選択"
+                  placeholder: "タグを選択"
                 });
               </script>
   
