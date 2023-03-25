@@ -65,5 +65,11 @@ class PhotoController extends Controller
     
     
     
+    public function destroy($id)
+    {
+        $result = Photo::find($id)->delete();
+        return redirect()->route('photo.index');
+    }
+    
     
 }

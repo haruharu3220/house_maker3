@@ -20,6 +20,9 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="{{ asset('css/test.css') }}">
 </head>
@@ -28,17 +31,17 @@
 
     <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Tweet Index') }}
+        {{ __('画像一覧ページ') }}
       </h2>
     </x-slot>
     
     <ul class="sort-btn"> 
       <li>
-        <dl>
-          <dt>All</dt>
-          <dd>
-            <ul>
-              <li class="all active">全て</li>
+        <dl>  <!--description list 説明リスト-->
+          <dt>All</dt>  <!--description list term 項目名や用語-->
+          <dd>  <!--description description 説明や定義、値-->
+            <ul>  <!--unordered list 順不同リスト-->
+              <li class="all active">全て</li>  <!--list item リスト項目-->
             </ul>
           </dd>
         </dl>
@@ -78,6 +81,19 @@
           <a href="{{$photo->image}}" data-fancybox="group2" data-caption="グループ2キャプション">
               <img src="{{ asset('storage/image/'.$photo->image)}}" class="modal-trigger mx-auto" >
           </a>
+           <form action="{{ route('photo.destroy',$photo->id) }}" method="POST" class="text-left">
+              @method('delete')
+              @csrf
+              <!--<x-primary-button class="ml-3">-->
+                <button type="submit">
+                <i class="fa-regular fa-trash-can"></i>
+                <i class="fa-regular fa-trash-can"></i>
+                <i class="fas fa-thumbs-up"></i>
+                <i class="fa fa-wrench faa-wrench animated faa-fast"></i>
+                 <i class="fas fa-trash"></i>
+                </button>
+              <!--</x-primary-button>-->
+            </form>
         </div>
       </li>
     @endforeach
@@ -88,6 +104,7 @@
   <div id="modal">
     <div class="modal-content">
       <img src="" alt="">
+      
     </div>
     <div class="modal-close">×</div>
   </div>
